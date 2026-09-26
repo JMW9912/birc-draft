@@ -120,7 +120,9 @@ h1,h2,h3{text-wrap:balance}
 .year-label{display:block;font-family:var(--serif);font-size:24px;font-weight:700;color:var(--ink);margin:30px 0 14px;padding-top:12px;border-top:2px solid var(--ink)}
 
 /* publications */
-.pubs p{padding:0 0 14px;margin:0 0 14px;border-bottom:1px solid var(--line)}
+.pubs p{padding:0;margin:0}
+.pubs .pub{padding:0 0 16px;margin:0 0 16px;border-bottom:1px solid var(--line)}
+.pubs .pub>p:empty{display:none}
 .pubs .video{margin:12px 0 0;max-width:533px}
 .pubs img{max-height:300px;width:auto;max-width:100%;height:auto;margin:10px 0}
 .pubs .pubmedia{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap;margin:12px 0}
@@ -147,7 +149,7 @@ h1,h2,h3{text-wrap:balance}
 
 /* ---------- news ---------- */
 .news-item{padding:24px 0;border-top:1px solid var(--line)}
-.news-item:first-child{border-top:0;padding-top:4px}
+.news-item:first-child{border-top:0}
 .news-item .date{display:block;font-size:14.5px;font-weight:600;color:var(--cr);margin-bottom:6px}
 .news-item .body{color:var(--ink);font-size:17px}
 .news-item .body b{font-weight:500;color:var(--ink)}
@@ -515,12 +517,12 @@ h1,h2,h3{text-wrap:balance}
 .h-list time,.h-list .meta,.news-item .date,.ndate{font-size:var(--t-meta)}
 
 /* readable line length for running text on wide screens */
-.page-head p,.panel p,.hypothesis-copy,.research-section-head p,.pi-role,.pi-text,.pi-facts li,.alcards .al-bio,.content:not(.bio)>p,.pubs p,.alumni ul{max-width:var(--measure)}
+.page-head p,.panel p,.hypothesis-copy,.research-section-head p,.pi-role,.pi-text,.pi-facts li,.alcards .al-bio,.content:not(.bio)>p,.alumni ul{max-width:var(--measure)}
 
 /* touch targets: 44px hit areas, same look */
 .burger{min-width:44px;min-height:44px;align-items:center;justify-content:center;padding:10px;margin-right:-10px}
 .brand{min-height:44px}
-.h-bar a,.h-sec-title a,.alumni-link a,.page-head .crumb a,.hl-cap a,.foot a,.alumni .mail,.mgrid .mcard .de .mail,.email-link,.pubs p>a,.older-btn{display:inline-block;padding-block:12px;margin-block:-12px}
+.h-bar a,.h-sec-title a,.alumni-link a,.page-head .crumb a,.hl-cap a,.foot a,.alumni .mail,.mgrid .mcard .de .mail,.email-link,.pubs .pub>a,.older-btn{display:inline-block;padding-block:12px;margin-block:-12px}
 .hl-cap a{padding-block:10px 11px;margin-block:-10px -11px}
 .h-slides .arw{width:44px;height:44px}
 .h-dots{gap:0}
@@ -545,3 +547,13 @@ h1,h2,h3{text-wrap:balance}
 @media(min-width:1101px){.section.wrap:has(>.bio){margin-left:auto;margin-right:auto;max-width:var(--maxw)}.section.wrap:has(>.bio)>*{max-width:1020px}}
 .h-slides .arw{padding:0;line-height:0}
 .h-slides .arw svg{width:20px;height:20px;display:block;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+/* publications: award / cover notes as tags (same look as research tags) */
+.pubs u.award{text-decoration:none;display:inline-block;font-size:13.5px;font-weight:600;color:var(--cr);background:var(--cr-soft);border:1px solid #ecd3d7;border-radius:3px;padding:1px 8px;margin:0 2px;line-height:1.5;vertical-align:1px}
+.pubs u.award b{color:inherit;font-weight:600}
+/* e-mail icon */
+.mail-ic{width:1.05em;height:1.05em;flex:0 0 auto;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round;vertical-align:-.15em}
+.email-link,.alumni .mail,.mgrid .mcard .de .mail{display:inline-flex;align-items:center;gap:6px}
+/* members: same visible gap under every group title, no extra space after the alumni link */
+.mgroup h2{margin-bottom:12px}
+.mgroup>.alumni-link{margin:0 0 12px}
+.mgroup>.alumni-link:last-child{margin-bottom:0}

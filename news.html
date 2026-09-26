@@ -7,7 +7,7 @@
 <meta name="description" content="BiRC Lab news by year.">
 <link rel="preload" href="fonts/ibm-plex-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/source-serif-4-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/birc.css?v=17">
+<link rel="stylesheet" href="css/birc.css?v=18">
 </head>
 <body>
 
@@ -36,7 +36,7 @@
 <div id="newsPanes"></div>
 </section>
 <script src="data/news_data.js?v=37"></script>
-<script src="js/news.js?v=17"></script>
+<script src="js/news.js?v=18"></script>
 <div class="lightbox" id="lb"><button class="lb-close" aria-label="Close">&times;</button><div class="lb-content" id="lb-body"></div></div>
 <script>(function(){var lb=document.getElementById('lb'),bd=document.getElementById('lb-body');if(!lb)return;function op(h){bd.innerHTML=h;lb.classList.add('show');}function cl(){lb.classList.remove('show');bd.innerHTML='';}lb.addEventListener('click',function(e){if(e.target===lb||e.target.classList.contains('lb-close'))cl();});document.addEventListener('keydown',function(e){if(e.key==='Escape')cl();});document.addEventListener('click',function(e){var im=e.target.closest('#newsPanes img');if(!im)return;if(im.classList.contains('ytthumb')||im.closest('.ytlite')||im.closest('a'))return;e.preventDefault();op('<img class="lb-img" alt="" src="'+im.getAttribute('src')+'">');});})();</script>
 <footer class="site-foot">
@@ -46,6 +46,6 @@
   </div>
 </footer>
 <button id="toTop" type="button" aria-label="Back to top">&uarr; TOP</button>
-<script src="js/site.js?v=17" defer></script>
+<script src="js/site.js?v=18" defer></script>
 </body>
 </html>

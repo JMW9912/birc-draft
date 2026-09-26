@@ -7,7 +7,7 @@
 <meta name="description" content="BiRC Lab publications.">
 <link rel="preload" href="fonts/ibm-plex-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/source-serif-4-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/birc.css?v=17">
+<link rel="stylesheet" href="css/birc.css?v=18">
 </head>
 <body>
 
@@ -51,7 +51,7 @@
       var lastY=null;
       items.forEach(function(it){
         if(it.year && it.year!==lastY){ html+='<div class="year-label">'+it.year+'</div>'; lastY=it.year; }
-        html+='<p>'+it.html+'</p>';
+        var h=it.html.replace(/<u>(\s*(?:<b>)?\s*)\[/g,'<u class="award">$1').replace(/\]((?:\s*<\/b>)?\s*)<\/u>/g,'$1</u>');html+='<div class="pub">'+h+'</div>';
       });
     });
     html+='</div>';
@@ -73,6 +73,6 @@
   </div>
 </footer>
 <button id="toTop" type="button" aria-label="Back to top">&uarr; TOP</button>
-<script src="js/site.js?v=17" defer></script>
+<script src="js/site.js?v=18" defer></script>
 </body>
 </html>
