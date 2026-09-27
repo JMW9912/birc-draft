@@ -84,14 +84,17 @@
   window.addEventListener('resize', fitAll);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitAll);
 
-  // ---- Latest 5 news items and 5 journal papers, read from the same data files as the News/Publications pages
+  // ---- Latest news items and journal papers, read from the same data files as the News/Publications pages.
+  // Three of each are shown; on desktop the arrow button below reveals up to six (the extra items are hidden on phones).
+  var SHOW = 3, MAX = 6;
+  function li(i, inner) { return '<li' + (i >= SHOW ? ' class="more"' : '') + '>' + inner + '</li>'; }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function clip(s, n) { s = s.replace(/\s+/g, ' ').trim(); if (s.length <= n) return s; var c = s.slice(0, n); return c.slice(0, c.lastIndexOf(' ')) + '…'; }
   var parser = window.DOMParser ? new DOMParser() : null; // parsed documents never load images
 
   var newsEl = document.getElementById('homeNews');
   if (newsEl && window.BIRC_NEWS && parser) {
-    newsEl.innerHTML = window.BIRC_NEWS.slice(0, 5).map(function (it) {
+    newsEl.innerHTML = window.BIRC_NEWS.slice(0, MAX).map(function (it, i) {
       var date = it.date || '', text = it.text || '';
       if (it.html) {
         var doc = parser.parseFromString(it.html, 'text/html');
@@ -99,7 +102,7 @@
         if (d) { date = d.textContent.replace(/\.\s*$/, '').trim(); d.remove(); }
         text = doc.body.textContent;
       }
-      return '<li><time>' + esc(date) + '</time><a href="news.html">' + esc(clip(text, 150)) + '</a></li>';
+      return li(i, '<time>' + esc(date) + '</time><a href="news.html">' + esc(clip(text, 150)) + '</a>');
     }).join('');
   }
 
@@ -109,13 +112,24 @@
     var items = [];
     g.sections.forEach(function (s) { items = items.concat(s.items); });
     items.sort(function (a, b) { return (b.n || 0) - (a.n || 0); });
-    pubEl.innerHTML = items.slice(0, 5).map(function (it) {
+    pubEl.innerHTML = items.slice(0, MAX).map(function (it, i) {
       var doc = parser.parseFromString(it.html, 'text/html');
       var txt = doc.body.textContent;
       var m = txt.match(/[“"]([^”"]+)[”"]/);
       var title = m ? m[1].replace(/[,.]\s*$/, '') : clip(txt, 120);
       var venue = doc.querySelector('i') ? doc.querySelector('i').textContent : '';
-      return '<li><span class="meta">[' + it.n + '] ' + esc(venue) + (it.year ? ', ' + it.year : '') + '</span><a href="publications.html">' + esc(title) + '</a></li>';
+      return li(i, '<span class="meta">[' + it.n + '] ' + esc(venue) + (it.year ? ', ' + it.year : '') + '</span><a href="publications.html">' + esc(title) + '</a>');
     }).join('');
+  }
+
+  var more = document.getElementById('homeMore');
+  if (more && document.querySelector('.h-news .more')) {
+    more.hidden = false;
+    more.addEventListener('click', function () {
+      var open = more.getAttribute('aria-expanded') !== 'true';
+      more.setAttribute('aria-expanded', open ? 'true' : 'false');
+      more.setAttribute('aria-label', open ? 'Show fewer news and publications' : 'Show more news and publications');
+      more.parentNode.classList.toggle('open', open);
+    });
   }
 })();
