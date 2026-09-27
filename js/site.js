@@ -4,11 +4,17 @@
   var burger = document.querySelector('.burger');
   var mob = document.getElementById('mob');
   if (burger && mob) {
-    burger.addEventListener('click', function () {
-      var open = burger.getAttribute('aria-expanded') === 'true';
-      burger.setAttribute('aria-expanded', open ? 'false' : 'true');
-      mob.hidden = open;
+    // The menu overlays the page; tapping outside it, pressing Esc, or choosing a link closes it.
+    function setMenu(open) { burger.setAttribute('aria-expanded', open ? 'true' : 'false'); mob.hidden = !open; }
+    burger.addEventListener('click', function () { setMenu(burger.getAttribute('aria-expanded') !== 'true'); });
+    document.addEventListener('click', function (e) {
+      if (!mob.hidden && !mob.contains(e.target) && !burger.contains(e.target)) setMenu(false);
     });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !mob.hidden) { setMenu(false); burger.focus(); }
+    });
+    mob.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+    window.addEventListener('resize', function () { if (window.innerWidth > 900 && !mob.hidden) setMenu(false); });
   }
 
   // Back-to-top button

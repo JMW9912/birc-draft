@@ -50,7 +50,8 @@ h1,h2,h3{text-wrap:balance}
 .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .burger[aria-expanded="true"] span:nth-child(2){opacity:0}
 .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.mobile{border-top:1px solid var(--line);background:#fff;padding:4px 18px 18px}
+/* mobile menu floats over the page (the content behind it does not move) */
+.mobile{position:absolute;top:100%;left:0;right:0;max-height:calc(100vh - 60px);overflow-y:auto;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff;padding:4px 18px 18px;box-shadow:0 12px 24px rgba(16,18,22,.12)}
 .mobile a{display:block;padding:13px 2px;border-bottom:1px solid var(--line);font-size:16px;font-weight:500}
 .mobile a.active,.mobile a:hover{color:var(--cr)}
 .mobile .socials{border:0;padding:16px 2px 0;gap:20px}
