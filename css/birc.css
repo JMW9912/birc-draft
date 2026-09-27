@@ -464,7 +464,7 @@ h1,h2,h3{text-wrap:balance}
   .hl-cap h3{font-size:22px;margin:4px 0 0}
   .hl-cap p{display:none}
   .hl-cap a{margin-top:8px;font-size:14px}
-  .hl-picks{display:grid;grid-template-columns:repeat(3,1fr);border-left:0;border-top:1px solid #2b2e35}
+  .hl-picks{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;border-left:0;border-top:1px solid #2b2e35}
   .hl-pick{padding:13px 4px;border-bottom:0;text-align:center;align-items:center;min-width:0}
   .hl-pick+.hl-pick{border-left:1px solid #2b2e35}
   .hl-pick .k,.hl-pick b{display:none}

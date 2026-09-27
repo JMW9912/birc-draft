@@ -1,9 +1,17 @@
 // ===== BiRC Publications =====
 // Add a paper: inside the right group/section 'items' list, copy the template to the TOP.
-//   { "n": 89, "year": 2026, "html": "Author A, and <b>Joonbum BAE</b>*, \"Title,\" <i>Venue</i>, 2026. <a href='URL'>[link]</a>" },
-//   n    : entry number (just for display)
-//   year : publication year (used to sort)
-//   html : the formatted citation; add a YouTube with: <div class='video'><iframe src='https://www.youtube.com/embed/ID' allowfullscreen></iframe></div>
+//   { "n": 90, "year": 2026, "html": "[90] Author A, and <b>Joonbum BAE</b>*, “Title,” <i>Venue</i>, 2026. <a href=\"URL\">[link]</a>" },
+//   n    : entry number WITHIN ITS SECTION (each section counts from 1). Items are SORTED by n, newest = largest.
+//          Use (largest n in that section) + 1, and start "html" with the same "[n] ".
+//   year : publication year; only used to insert the year labels (keep it consistent with the n order)
+//   html : the formatted citation. Title in “curly quotes” and venue in <i>…</i> (the home page reads both).
+//          PI name as used in that section: journals <b>Joonbum BAE</b>*, conferences <b>J. BAE</b>, Korean <b>배준범</b>.
+//          Award tag: <b><u>[Best Paper Award]</u></b>
+//          YouTube video (click-to-load), append:
+//          <div class="video ytlite" data-vid="ID"><img alt="Play video" class="ytthumb" loading="lazy" src="https://i.ytimg.com/vi/ID/hqdefault.jpg"/><span class="ytplay"></span></div>
+// Groups: ij (Int. Journals), dj (Dom. Journals), ic (Int. Conferences), dc (Dom. Conferences), pat (Patents), book (Books).
+// The home page "Recent publications" shows the newest items of the "ij" group.
+// After editing, bump ?v= of this file in index.html and publications.html.
 
 window.BIRC_PUBS = [
  {

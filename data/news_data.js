@@ -7,7 +7,12 @@
 //   images : file names placed in the images folder (optional)
 //   video  : a YouTube id, e.g. "RgdeWiP4uts" (optional)
 //   link   : a URL (optional)
-// (Existing items below use a ready-made "html" field; you can ignore those.)
+// Simple fields show photos stacked one under another and at most one video, and "text" is shown as plain
+// text on the home page. For photos side by side or several videos, copy an existing "html" item instead:
+//   date  : <span class="ndate">July 1, 2026.</span>   (the home page reads the date from this span)
+//   photos: <div class="news-media single"><img class="land" loading="lazy" src="images/NAME.jpg" alt="..."/></div>
+//           class land / port / sq = landscape / portrait / square; "news-media multi" holds several photos
+// After editing, bump ?v= of this file in index.html and news.html.
 
 window.BIRC_NEWS = [
  {
